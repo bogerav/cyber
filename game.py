@@ -16,7 +16,7 @@ class Game():
         self.options = OptionsMenu(self)
         self.credits = CreditsMenu(self)
         self.curr_menu = self.main_menu
-        self.sprite_image = pygame.image.load("menu.png")
+        self.sprite_image = pygame.image.load("e.jpg")
         self.sprite_image = pygame.transform.smoothscale(self.sprite_image, (1280, 720))
 
     def game_loop(self):
@@ -26,7 +26,7 @@ class Game():
                 self.playing = False
             self.display.blit(self.sprite_image, (self.DISPLAY_W//2, self.DISPLAY_H//2))
             self.draw_text('Thanks for Playing', 50, self.DISPLAY_W//2, self.DISPLAY_H//2)
-            self.draw_text2('Thanks for Playing', 51, self.DISPLAY_W // 2, self.DISPLAY_H // 2)
+            self.draw_text2('Thanks for Playing', 55, self.DISPLAY_W // 2, self.DISPLAY_H // 2)
             self.window.blit(self.display, (0,0))
             pygame.display.update()
             self.reset_keys()
@@ -68,7 +68,7 @@ class Game():
 
     def draw_text3(self, text, size, x, y ):
         font = pygame.font.Font(self.font_name,size)
-        text_surface = font.render(text, True, (108, 209, 181))
+        text_surface = font.render(text, True, (255, 0, 89))
         text_rect = text_surface.get_rect()
         text_rect.center = (x,y)
         self.display.blit(text_surface,text_rect)

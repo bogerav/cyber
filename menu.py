@@ -9,7 +9,7 @@ class Menu():
         self.offset = - 200
 
     def draw_cursor(self):
-        self.game.draw_text2('»', 110, self.cursor_rect.x, self.cursor_rect.y-5)
+        self.game.draw_text2('»', 150, self.cursor_rect.x, self.cursor_rect.y-5)
         self.game.draw_text('»', 100, self.cursor_rect.x, self.cursor_rect.y-5)
 
     def blit_screen(self):
@@ -96,7 +96,7 @@ class OptionsMenu(Menu):
             self.game.draw_text2("Volume", 55, self.volx, self.voly)
             self.game.draw_text3("Volume", 50, self.volx, self.voly)
             self.game.draw_text2("Controls", 55, self.controlsx, self.controlsy)
-            self.game.draw_text3("Controls", 55, self.controlsx, self.controlsy)
+            self.game.draw_text3("Controls", 50, self.controlsx, self.controlsy)
             self.draw_cursor()
             self.blit_screen()
 
@@ -129,7 +129,10 @@ class CreditsMenu(Menu):
             self.game.display.blit(self.game.sprite_image, (0,0))
             self.game.draw_text2('Credits', 105, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 100)
             self.game.draw_text('Credits', 100, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 100)
-            self.game.draw_text2('Made by PoDoKoNniCk', 55, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 50)
-            self.game.draw_text3('Made   by   PoDoKoNniCk', 50, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 50)
+            self.game.draw_text2('Made   by', 52, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 50)
+            self.game.draw_text3('Made   by', 50, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 50)
+            self.game.draw_text2('PoDoKoNniCk, Ltd.', 51, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 100)
+            self.game.draw_text3('PoDoKoNniCk, Ltd.', 50, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 100)
+
 
             self.blit_screen()
