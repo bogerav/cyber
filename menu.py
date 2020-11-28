@@ -135,4 +135,4 @@ class CreditsMenu(Menu):
             self.game.draw_text3('PoDoKoNniCk, Ltd.', 50, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 100)
 
 
-            self.blit_screen()
+            self.blit_screen() 
