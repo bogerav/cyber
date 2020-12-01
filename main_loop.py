@@ -5,6 +5,7 @@ from game import Game
 
 ################################# LOAD UP A BASIC WINDOW AND CLOCK #################################
 pygame.init()
+pygame.display.set_caption("CYBER CARNAGE")
 DISPLAY_W, DISPLAY_H = 1280, 720
 canvas = pygame.Surface((6000, 2400))
 window = pygame.display.set_mode(((DISPLAY_W, DISPLAY_H)))
@@ -40,6 +41,8 @@ while running:
                 cat.LEFT_KEY, cat.FACING_LEFT = True, True
             elif event.key == pygame.K_RIGHT:
                 cat.RIGHT_KEY, cat.FACING_LEFT = True, False
+            elif event.key == pygame.K_z and cat.JUMP == False:
+                cat.JUMP = True
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT:
                 cat.LEFT_KEY = False

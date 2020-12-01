@@ -2,22 +2,24 @@ import pygame
 from spritesheet import Spritesheet
 
 DISPLAY_W, DISPLAY_H = 1280, 720
+FPS = 60
 
 
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.LEFT_KEY, self.RIGHT_KEY, self.FACING_LEFT = False, False, False
+        self.LEFT_KEY, self.RIGHT_KEY, self.FACING_LEFT, self.JUMP = False, False, False, False
         self.load_frames()
         self.rect = self.idle_frames_left[0].get_rect()
-        self.rect.midbottom = (0, 2000)
+        self.rect.midbottom = (200, 1800)
         self.current_frame = 0
         self.last_updated = 0
-        self.velocity = 0
+        self.velocity_x = 0
+        self.velocity_y = 20
         self.state = 'idle'
         self.current_image = self.idle_frames_left[0]
         self.left_border, self.right_border = 0, 6000
-        self.ground_y = 2000
+        self.ground_y = 1800
         self.box = pygame.Rect(self.rect.x, self.rect.y, self.rect.w * 2, self.rect.h)
         self.box.center = self.rect.center
         self.passed = False
@@ -26,17 +28,23 @@ class Player(pygame.sprite.Sprite):
         display.blit(self.current_image, self.rect)
 
     def update(self):
-        self.velocity = 0
+        self.velocity_x = 0
+        if self.JUMP:
+            self.rect.y -= self.velocity_y
+            self.velocity_y -= 1
+            if self.velocity_y < -20:
+                self.JUMP = False
+                self.velocity_y = 20
         if self.LEFT_KEY:
-            self.velocity = -10
+            self.velocity_x = -10
         elif self.RIGHT_KEY:
-            self.velocity = 10
-        self.rect.x += self.velocity
-        if self.velocity == 0 and self.passed:
+            self.velocity_x = 10
+        self.rect.x += self.velocity_x
+        if self.velocity_x == 0 and self.passed:
             self.passed = False
             self.box.center = self.rect.center
-        if self.rect.x > 6000 - self.rect.w:
-            self.rect.x = 6000 - self.rect.w
+        if self.rect.x > self.right_border - self.rect.w:
+            self.rect.x = self.right_border - self.rect.w
         elif self.rect.x <= self.left_border:
             self.rect.x = self.left_border
         self.set_state()
@@ -46,15 +54,15 @@ class Player(pygame.sprite.Sprite):
         else:
             self.passed = True
             if self.rect.left > self.box.left:
-                self.box.left += self.velocity
+                self.box.left += self.velocity_x
             elif self.rect.right < self.box.right:
-                self.box.left += self.velocity
+                self.box.left += self.velocity_x
 
     def set_state(self):
         self.state = ' idle'
-        if self.velocity > 0:
+        if self.velocity_x > 0:
             self.state = 'moving right'
-        elif self.velocity < 0:
+        elif self.velocity_x < 0:
             self.state = 'moving left'
 
     def animate(self):
