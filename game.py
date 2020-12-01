@@ -24,11 +24,6 @@ class Game():
             self.check_events()
             if self.START_KEY:
                 self.playing = False
-            self.display.blit(self.sprite_image, (self.DISPLAY_W//2, self.DISPLAY_H//2))
-            self.draw_text('Thanks for Playing', 50, self.DISPLAY_W//2, self.DISPLAY_H//2)
-            self.draw_text2('Thanks for Playing', 55, self.DISPLAY_W // 2, self.DISPLAY_H // 2)
-            self.window.blit(self.display, (0,0))
-            pygame.display.update()
             self.reset_keys()
 
 
