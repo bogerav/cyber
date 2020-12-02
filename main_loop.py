@@ -11,14 +11,14 @@ canvas = pygame.Surface((6000, 2400))
 window = pygame.display.set_mode(((DISPLAY_W, DISPLAY_H)))
 running = True
 clock = pygame.time.Clock()
-house = pygame.image.load('m_merged_2.png').convert()
+house = pygame.image.load('m_merged_21.png').convert()
 
 ################################# LOAD PLAYER AND CAMERA###################################
 g = Game()
 cat = Player()
 camera = Camera(cat)
-follow = Follow(camera,cat)
-border = Border(camera,cat)
+follow = Follow(camera, cat)
+border = Border(camera, cat)
 camera.setmethod(follow)
 ################################# GAME LOOP ##########################
 while g.running:
