@@ -7,11 +7,11 @@ from game import Game
 pygame.init()
 pygame.display.set_caption("CYBER CARNAGE")
 DISPLAY_W, DISPLAY_H = 1280, 720
-canvas = pygame.Surface((6000, 2400))
+canvas = pygame.Surface((1920, 1200))
 window = pygame.display.set_mode(((DISPLAY_W, DISPLAY_H)))
 running = True
 clock = pygame.time.Clock()
-house = pygame.image.load('m_merged_21.png').convert()
+house = pygame.image.load('the_art_demo.png').convert()
 
 ################################# LOAD PLAYER AND CAMERA###################################
 g = Game()
@@ -55,7 +55,7 @@ while running:
     ################################# UPDATE WINDOW AND DISPLAY #################################
     canvas.blit(house, (0 - camera.offset.x, 0 - camera.offset.y))
     canvas.blit(cat.current_image,(cat.rect.x - camera.offset.x, cat.rect.y - camera.offset.y))
-    window.blit(canvas, (0, -1400))
+    window.blit(canvas, (0, -400))
     pygame.display.update()
 
 

@@ -11,15 +11,15 @@ class Player(pygame.sprite.Sprite):
         self.LEFT_KEY, self.RIGHT_KEY, self.FACING_LEFT, self.JUMP = False, False, False, False
         self.load_frames()
         self.rect = self.idle_frames_left[0].get_rect()
-        self.rect.midbottom = (200, 1800)
+        self.rect.midbottom = (200, 900)
         self.current_frame = 0
         self.last_updated = 0
         self.velocity_x = 0
-        self.velocity_y = 20
+        self.velocity_y = 10
         self.state = 'idle'
         self.current_image = self.idle_frames_left[0]
-        self.left_border, self.right_border = 0, 6000
-        self.ground_y = 1800
+        self.left_border, self.right_border = 0, 1920
+        self.ground_y = 900
         self.box = pygame.Rect(self.rect.x, self.rect.y, self.rect.w * 2, self.rect.h)
         self.box.center = self.rect.center
         self.passed = False
@@ -32,13 +32,13 @@ class Player(pygame.sprite.Sprite):
         if self.JUMP:
             self.rect.y -= self.velocity_y
             self.velocity_y -= 1
-            if self.velocity_y < -20:
+            if self.velocity_y < -10:
                 self.JUMP = False
-                self.velocity_y = 20
+                self.velocity_y = 10
         if self.LEFT_KEY:
-            self.velocity_x = -10
+            self.velocity_x = -5
         elif self.RIGHT_KEY:
-            self.velocity_x = 10
+            self.velocity_x = 5
         self.rect.x += self.velocity_x
         if self.velocity_x == 0 and self.passed:
             self.passed = False
@@ -85,11 +85,10 @@ class Player(pygame.sprite.Sprite):
                     self.current_image = self.walking_frames_right[self.current_frame]
 
     def load_frames(self):
-        my_spritesheet = Spritesheet('poppy_sheet.png')
+        my_spritesheet = Spritesheet('hero_run.png')
         # pygame.image.load('MY_IMAGE_NAME.png').convert()
-        self.idle_frames_left = [my_spritesheet.parse_sprite("poppy_idle1.png"),
-                                 my_spritesheet.parse_sprite("poppy_idle2.png")]
-        self.walking_frames_left = [my_spritesheet.parse_sprite("poppywalk1.png"),
+        self.idle_frames_right = [my_spritesheet.parse_sprite("poppy_idle1.png")]
+        self.walking_frames_right = [my_spritesheet.parse_sprite("poppywalk1.png"),
                                     my_spritesheet.parse_sprite("poppywalk2.png"),
                                     my_spritesheet.parse_sprite("poppywalk3.png"),
                                     my_spritesheet.parse_sprite("poppywalk4.png"),
@@ -97,9 +96,9 @@ class Player(pygame.sprite.Sprite):
                                     my_spritesheet.parse_sprite("poppywalk6.png"),
                                     my_spritesheet.parse_sprite("poppywalk7.png"),
                                     my_spritesheet.parse_sprite("poppywalk8.png")]
-        self.idle_frames_right = []
-        for frame in self.idle_frames_left:
-            self.idle_frames_right.append(pygame.transform.flip(frame, True, False))
-        self.walking_frames_right = []
-        for frame in self.walking_frames_left:
-            self.walking_frames_right.append(pygame.transform.flip(frame, True, False))
+        self.idle_frames_left = []
+        for frame in self.idle_frames_right:
+            self.idle_frames_left.append(pygame.transform.flip(frame, True, False))
+        self.walking_frames_left = []
+        for frame in self.walking_frames_right:
+            self.walking_frames_left.append(pygame.transform.flip(frame, True, False))
