@@ -10,7 +10,7 @@ DISPLAY = (WIN_WIDTH, WIN_HEIGHT)  # Группируем ширину и выс
 BACKGROUND_COLOR = (0, 0, 255)
 PLATFORM_WIDTH = 32
 PLATFORM_HEIGHT = 32
-PLATFORM_COLOR = (255, 0, 0)
+PLATFORM_COLOR = (255, 255, 255)
 
 pygame.init()  # Инициация PyGame, обязательная строчка
 clock = pygame.time.Clock()
@@ -60,7 +60,7 @@ def main():
                     pf = Platform(x, y)
                     entities.add(pf)
                     platforms.append(pf)
-                    # создаем блок, заливаем его цветом и рисеум его
+                    # создаем блок, заливаем его цветом и рисуем его
                     pygame.draw.rect(screen, PLATFORM_COLOR, (x, y, PLATFORM_WIDTH, PLATFORM_HEIGHT))
                 x += PLATFORM_WIDTH  # блоки платформы ставятся на ширине блоков
             y += PLATFORM_HEIGHT  # то же самое и с высотой
