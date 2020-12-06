@@ -102,3 +102,4 @@ class Player(pygame.sprite.Sprite):
         self.walking_frames_left = []
         for frame in self.walking_frames_right:
             self.walking_frames_left.append(pygame.transform.flip(frame, True, False))
+
