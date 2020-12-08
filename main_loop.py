@@ -36,23 +36,6 @@ while running:
     else:
         camera.setmethod(follow)
     ################################# CHECK PLAYER INPUT #################################
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT:
-                cat.LEFT_KEY, cat.FACING_LEFT = True, True
-            elif event.key == pygame.K_RIGHT:
-                cat.RIGHT_KEY, cat.FACING_LEFT = True, False
-            elif event.key == pygame.K_z and cat.JUMP == False:
-                cat.JUMP = True
-        if event.type == pygame.KEYUP:
-            if event.key == pygame.K_LEFT:
-                cat.LEFT_KEY = False
-            elif event.key == pygame.K_RIGHT:
-                cat.RIGHT_KEY = False
-
-
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -72,7 +55,6 @@ while running:
                 cat.RIGHT_KEY = False
 
     ################################# UPDATE/ Animate SPRITE #################################
-    policeman.update()
     cat.update()
     camera.scroll()
     policeman.update()
@@ -80,7 +62,7 @@ while running:
 
     canvas.blit(house, (0 - camera.offset.x, 0 - camera.offset.y))
     canvas.blit(cat.current_image,(cat.rect.x - camera.offset.x, cat.rect.y - camera.offset.y))
-    canvas.blit(policeman.current_image, (policeman.rect.x, policeman.rect.y))
+    canvas.blit(policeman.current_image, (policeman.rect.x - camera.offset.x, policeman.rect.y - camera.offset.y))
     window.blit(canvas, (0, -400))
     pygame.display.update()
 

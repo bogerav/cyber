@@ -14,7 +14,7 @@ class Policeman(pygame.sprite.Sprite):
         self.rect.midbottom = (200, 900)
         self.current_frame = 0
         self.last_updated = 0
-        self.velocity_x = 0
+        self.velocity_x = 10
         self.velocity_y = 10
         self.state = 'idle'
         self.current_image = self.idle_frames_left[0]
@@ -49,14 +49,6 @@ class Policeman(pygame.sprite.Sprite):
             self.rect.x = self.left_border
         self.set_state()
         self.animate()
-        if self.rect.left > self.box.left and self.rect.right < self.box.right:
-            pass
-        else:
-            self.passed = True
-            if self.rect.left > self.box.left:
-                self.box.left += self.velocity_x
-            elif self.rect.right < self.box.right:
-                self.box.left += self.velocity_x
 
     def set_state(self):
         self.state = ' idle'
