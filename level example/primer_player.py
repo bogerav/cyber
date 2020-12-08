@@ -1,8 +1,8 @@
 from pygame import *
 
 MOVE_SPEED = 7
-WIDTH = 22
-HEIGHT = 32
+WIDTH = 5
+HEIGHT = 8
 COLOR = "#888888"
 JUMP_POWER = 10
 GRAVITY = 0.35 # Сила, которая будет тянуть нас вниз
