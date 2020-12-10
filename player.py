@@ -95,10 +95,12 @@ class Player(pygame.sprite.Sprite):
                                     my_spritesheet.parse_sprite("poppywalk5.png"),
                                     my_spritesheet.parse_sprite("poppywalk6.png"),
                                     my_spritesheet.parse_sprite("poppywalk7.png"),
-                                    my_spritesheet.parse_sprite("poppywalk8.png")]
+                                    my_spritesheet.parse_sprite("poppywalk8.png"),
+                                    my_spritesheet.parse_sprite("poppywalk9.png")]
         self.idle_frames_left = []
         for frame in self.idle_frames_right:
             self.idle_frames_left.append(pygame.transform.flip(frame, True, False))
         self.walking_frames_left = []
         for frame in self.walking_frames_right:
             self.walking_frames_left.append(pygame.transform.flip(frame, True, False))
+

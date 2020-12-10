@@ -1,81 +1,73 @@
 {"frames": {
 
-"poppy_idle1.png":
+"policeman_frame_walk_idle.png":
 {
-	"frame": {"x":0,"y":11,"w":30,"h":62},
+	"frame": {"x":9,"y":7,"w":22,"h":48},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":62},
 	"sourceSize": {"w":30,"h":62}
 },
 
-"poppywalk1.png":
+"policeman_frame_walk_1.png":
 {
-	"frame": {"x":0,"y":11,"w":30,"h":62},
+	"frame": {"x":9,"y":7,"w":22,"h":48},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":62},
 	"sourceSize": {"w":30,"h":62}
 },
-"poppywalk2.png":
+"policeman_frame_walk_2.png":
 {
-	"frame": {"x":30,"y":11,"w":30,"h":62},
+	"frame": {"x":36,"y":6,"w":19,"h":50},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":62},
 	"sourceSize": {"w":30,"h":62}
 },
-"poppywalk3.png":
+"policeman_frame_walk_3.png":
 {
-	"frame": {"x":64,"y":11,"w":30,"h":62},
+	"frame": {"x":60,"y":6,"w":20,"h":49},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":62},
 	"sourceSize": {"w":30,"h":62}
 },
-"poppywalk4.png":
+"policeman_frame_walk_4.png":
 {
-	"frame": {"x":101,"y":11,"w":30,"h":62},
+	"frame": {"x":88,"y":7,"w":18,"h":49},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":62},
 	"sourceSize": {"w":30,"h":62}
 },
-"poppywalk5.png":
+"policeman_frame_walk_5.png":
 {
-	"frame": {"x":128,"y":11,"w":30,"h":62},
+	"frame": {"x":113,"y":7,"w":18,"h":49},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":62},
 	"sourceSize": {"w":30,"h":62}
 },
-"poppywalk6.png":
+"policeman_frame_walk_6.png":
 {
-	"frame": {"x":156,"y":11,"w":30,"h":62},
+	"frame": {"x":136,"y":6,"w":22,"h":49},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":62},
 	"sourceSize": {"w":30,"h":62}
 },
-"poppywalk7.png":
+"policeman_frame_walk_7.png":
 {
-	"frame": {"x":192,"y":11,"w":30,"h":62},
+	"frame": {"x":163,"y":6,"w":21,"h":50},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":62},
 	"sourceSize": {"w":30,"h":62}
 },
-"poppywalk8.png":
+"policeman_frame_walk_8.png":
 {
-	"frame": {"x":230,"y":11,"w":30,"h":62},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":62},
-	"sourceSize": {"w":30,"h":62}
-},
-"poppywalk9.png":
-{
-	"frame": {"x":261,"y":11,"w":30,"h":62},
+	"frame": {"x":192,"y":7,"w":18,"h":47},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":62},
@@ -84,7 +76,7 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "hero_run.png",
+	"image": "policeman_walking.png",
 	"format": "RGBA8888",
 	"size": {"w":124,"h":205},
 	"scale": "1",
