@@ -1,4 +1,5 @@
 import pygame
+from cyber import player
 from player import Player
 from Cyber_Policeman import Policeman
 from camera import *

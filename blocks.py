@@ -14,4 +14,10 @@ class Platform(sprite.Sprite):
         self.image = Surface((PLATFORM_WIDTH, PLATFORM_HEIGHT))
         self.image.fill(Color(PLATFORM_COLOR))
         self.rect = Rect(x, y, PLATFORM_WIDTH, PLATFORM_HEIGHT)
-        self.image = image.load("%s/platform.png" % ICON_DIR)
+        self.current_image = image.load("%s/platform.png" % ICON_DIR)
+
+
+class Escape(Platform):
+    def __init__(self, x, y):
+        Platform.__init__(self, x, y)
+        self.current_image = image.load("%s/portal.png" % ICON_DIR)
