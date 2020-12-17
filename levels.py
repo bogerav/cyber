@@ -6,6 +6,7 @@ import pygame
 from newcamera import Camera
 from game import Game
 from newpolice import Policeman
+from B_U_LL_E_T import Bullet
 
 # Объявляем переменные
 pygame.init()
@@ -57,6 +58,7 @@ def level_1():
     up = False
 
     entities = pygame.sprite.Group()  # Все объекты
+    policemen = pygame.sprite.Group()
     platforms = []  # то, во что мы будем врезаться или опираться
 
     entities.add(hero)
@@ -109,8 +111,8 @@ def level_1():
 
             elif col == "P":
                 pol = Policeman(x, y)
+                policemen.add(pol)
                 entities.add(pol)
-                platforms.append(pol)
 
             x += PLATFORM_WIDTH  # блоки платформы ставятся на ширине блоков
         y += PLATFORM_HEIGHT  # то же самое и с высотой
@@ -118,12 +120,9 @@ def level_1():
 
     total_level_width = len(level[0]) * PLATFORM_WIDTH  # Высчитываем фактическую ширину уровня
     total_level_height = len(level) * PLATFORM_HEIGHT  # высоту
-
+    bullet = Bullet(hero.rect.x, hero.rect.y)
+    entities.add(bullet)
     camera = Camera(camera_configure, total_level_width, total_level_height)
-
-    for man in entities:
-        if isinstance(man, Policeman):
-            man.update(left, right, up, platforms)
 
     while running:  # Основной цикл программы
         timer.tick(60)
@@ -147,15 +146,18 @@ def level_1():
                 if event.key == pygame.MOUSEBUTTONDOWN:
                     hero.shoot()
 
-        all_sprites = pygame.sprite.Group()
-        all_sprites.add(hero)
-        all_sprites.draw(bg)
-        #all_sprites.add(policeman)
+
 
         screen.blit(bg, (0, 0))  # Каждую итерацию необходимо всё перерисовывать
 
+        for man in entities:
+            if isinstance(man, Policeman):
+                man.update(left, right, up, platforms)
+
         camera.update(hero)  # центризируем камеру относительно персонажа
-        hero.update(left, right, up, platforms)  # передвижение
+        hero.update(left, right, up, platforms)
+        for pol in policemen:
+            pol.update(left, right, up, platforms)# передвижение
         # entities.draw(screen) # отображение
         for e in entities:
             screen.blit(e.current_image, camera.apply(e))
