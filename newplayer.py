@@ -1,4 +1,6 @@
 import pygame
+
+
 from spritesheet import Spritesheet
 import blocks
 
@@ -102,6 +104,7 @@ class Player(pygame.sprite.Sprite):
                     self.current_image = self.walking_frames_left[self.current_frame]
                 elif self.state == 'moving right':
                     self.current_image = self.walking_frames_right[self.current_frame]
+
 
     def load_frames(self):
         my_spritesheet = Spritesheet('hero_run.png')

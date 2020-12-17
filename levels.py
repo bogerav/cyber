@@ -24,6 +24,8 @@ PLATFORM_COLOR = (255, 255, 255)
 hero = Player(55, 1000)
 g = Game()
 
+bullets = pygame.sprite.Group()
+
 
 def camera_configure(camera, target_rect):
     l, t, _, _ = target_rect
@@ -142,6 +144,12 @@ def level_1():
                     right = False
                 elif event.key == pygame.K_UP:
                     up = False
+                if event.key == pygame.MOUSEBUTTONDOWN:
+                    hero.shoot()
+
+        all_sprites = pygame.sprite.Group()
+        all_sprites.add(hero)
+        #all_sprites.add(policeman)
 
         screen.blit(bg, (0, 0))  # Каждую итерацию необходимо всё перерисовывать
 
