@@ -149,6 +149,7 @@ def level_1():
 
         all_sprites = pygame.sprite.Group()
         all_sprites.add(hero)
+        all_sprites.draw(bg)
         #all_sprites.add(policeman)
 
         screen.blit(bg, (0, 0))  # Каждую итерацию необходимо всё перерисовывать
