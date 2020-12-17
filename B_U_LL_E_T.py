@@ -12,14 +12,18 @@ cat = Player()
 
 
 class Bullet(pygame.sprite.Sprite):
-    def __init__(self, x, y):
+    def __init__(self, kind, x, y):
         pygame.sprite.Sprite.__init__(self)
+        self.kind = kind
         self.image = pygame.Surface((10, 20))
         self.current_image = pygame.image.load("smoll_laser.png")
         self.rect = self.image.get_rect()
-        self.rect.midbottom = (x+cat.rect.width//2, y+cat.rect.height/2)
-        self.speedy = 1
+        self.rect.midbottom = (x+kind.rect.width//2, y+kind.rect.height/2)
+        if self.kind.FACING_LEFT:
+            self.speedy = -10
+        else:
+            self.speedy = 10
 
     def update(self):
-        self.rect.x += self.speedy
+            self.rect.x += self.speedy
         # убить, если он заходит за верхнюю часть экрана

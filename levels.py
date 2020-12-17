@@ -136,7 +136,7 @@ def level_1():
                 elif event.key == pygame.K_UP and hero.JUMP == False:
                     up = True
                 elif event.key == pygame.K_x:
-                    bullet = Bullet(hero.rect.x, hero.rect.y)
+                    bullet = Bullet(hero, hero.rect.x, hero.rect.y)
                     bullets.add(bullet)
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT:
@@ -151,9 +151,6 @@ def level_1():
 
         screen.blit(bg, (0, 0))  # Каждую итерацию необходимо всё перерисовывать
 
-        for man in entities:
-            if isinstance(man, Policeman):
-                man.update(left, right, up, platforms)
 
         for bullet in bullets:
             bullet.update()
