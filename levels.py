@@ -161,7 +161,7 @@ def level_1():
         camera.update(hero)  # центризируем камеру относительно персонажа
         hero.update(left, right, up, platforms)
         for pol in policemen:
-            pol.update(left, right, up, platforms)# передвижение
+            pol.update(False, False, False, platforms)# передвижение
         # entities.draw(screen) # отображение
         for e in entities:
             screen.blit(e.current_image, camera.apply(e))
