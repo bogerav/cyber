@@ -157,7 +157,7 @@ def level_1():
 
         for bullet in bullets:
             bullet.update()
-            screen.blit(bullet.current_image, (bullet.rect.x, bullet.rect.y))
+            screen.blit(bullet.current_image, camera.apply(bullet))
 
         camera.update(hero)  # центризируем камеру относительно персонажа
         hero.update(left, right, up, platforms)

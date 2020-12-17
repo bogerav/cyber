@@ -17,7 +17,7 @@ class Bullet(pygame.sprite.Sprite):
         self.image = pygame.Surface((10, 20))
         self.current_image = pygame.image.load("smoll_laser.png")
         self.rect = self.image.get_rect()
-        self.rect.midbottom = (x, y-300)
+        self.rect.midbottom = (x+cat.rect.width//2, y+cat.rect.height/2)
         self.speedy = 1
 
     def update(self):
