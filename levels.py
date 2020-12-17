@@ -120,10 +120,8 @@ def level_1():
 
     total_level_width = len(level[0]) * PLATFORM_WIDTH  # Высчитываем фактическую ширину уровня
     total_level_height = len(level) * PLATFORM_HEIGHT  # высоту
-    bullet = Bullet(hero.rect.x, hero.rect.y)
-    bullets = pygame.sprite.Group()
-    bullets.add(bullet)
     camera = Camera(camera_configure, total_level_width, total_level_height)
+    bullets = pygame.sprite.Group()
 
     while running:  # Основной цикл программы
         timer.tick(60)
@@ -137,6 +135,9 @@ def level_1():
                     right, hero.FACING_LEFT = True, False
                 elif event.key == pygame.K_UP and hero.JUMP == False:
                     up = True
+                elif event.key == pygame.K_x:
+                    bullet = Bullet(hero.rect.x, hero.rect.y)
+                    bullets.add(bullet)
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT:
                     left = False
@@ -144,8 +145,7 @@ def level_1():
                     right = False
                 elif event.key == pygame.K_UP:
                     up = False
-                if event.key == pygame.MOUSEBUTTONDOWN:
-                    hero.shoot()
+
 
 
 

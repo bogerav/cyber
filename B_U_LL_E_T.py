@@ -4,7 +4,7 @@ import pygame
 from player import Player
 from Cyber_Policeman import Policeman
 
-DISPLAY_W, DISPLAY_H = 1280, 720
+DISPLAY_W, DISPLAY_H = 800, 640
 FPS = 60
 
 policeman = Policeman()
@@ -17,12 +17,9 @@ class Bullet(pygame.sprite.Sprite):
         self.image = pygame.Surface((10, 20))
         self.current_image = pygame.image.load("smoll_laser.png")
         self.rect = self.image.get_rect()
-        self.rect.bottom = y
-        self.rect.centerx = x
-        self.speedy = -10
+        self.rect.midbottom = (x, y-300)
+        self.speedy = 1
 
     def update(self):
-        self.rect.y += self.speedy
+        self.rect.x += self.speedy
         # убить, если он заходит за верхнюю часть экрана
-        if self.rect.bottom < 0:
-            self.kill()
