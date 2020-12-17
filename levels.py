@@ -121,7 +121,8 @@ def level_1():
     total_level_width = len(level[0]) * PLATFORM_WIDTH  # Высчитываем фактическую ширину уровня
     total_level_height = len(level) * PLATFORM_HEIGHT  # высоту
     bullet = Bullet(hero.rect.x, hero.rect.y)
-    entities.add(bullet)
+    bullets = pygame.sprite.Group()
+    bullets.add(bullet)
     camera = Camera(camera_configure, total_level_width, total_level_height)
 
     while running:  # Основной цикл программы
@@ -153,6 +154,10 @@ def level_1():
         for man in entities:
             if isinstance(man, Policeman):
                 man.update(left, right, up, platforms)
+
+        for bullet in bullets:
+            bullet.update()
+            screen.blit(bullet.current_image, (bullet.rect.x, bullet.rect.y))
 
         camera.update(hero)  # центризируем камеру относительно персонажа
         hero.update(left, right, up, platforms)
