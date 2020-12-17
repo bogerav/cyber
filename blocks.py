@@ -20,5 +20,7 @@ class Platform(sprite.Sprite):
 class Escape(Platform):
     def __init__(self, x, y):
         Platform.__init__(self, x, y)
-        self.current_image = image.load("portal.png")
+        portal_surf = image.load('portal.bmp')
+        portal_surf.set_colorkey((255, 255, 255))
+        self.current_image = portal_surf
         

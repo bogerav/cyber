@@ -20,9 +20,9 @@ class Bullet(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.midbottom = (x+kind.rect.width//2, y+kind.rect.height/2)
         if self.kind.FACING_LEFT:
-            self.speedy = -1
+            self.speedy = -10
         else:
-            self.speedy = 1
+            self.speedy = 10
 
     def update(self):
             self.rect.x += self.speedy

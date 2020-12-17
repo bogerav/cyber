@@ -6,7 +6,7 @@ DISPLAY_W, DISPLAY_H = 800, 640
 FPS = 60
 MOVE_SPEED = 5
 WIDTH = 20
-HEIGHT = 64
+HEIGHT = 50
 JUMP_POWER = 10
 GRAVITY = 0.35 # Сила, которая будет тянуть нас вниз
 
@@ -77,7 +77,7 @@ class Policeman(pygame.sprite.Sprite):
 
 
     def set_state(self):
-        self.state = ' idle'
+        self.state = 'idle'
         if self.xvel > 0:
             self.state = 'moving right'
         elif self.xvel < 0:
@@ -85,7 +85,7 @@ class Policeman(pygame.sprite.Sprite):
 
     def animate(self):
         now = pygame.time.get_ticks()
-        if self.state == ' idle':
+        if self.state == 'idle':
             if now - self.last_updated > 200:
                 self.last_updated = now
                 self.current_frame = (self.current_frame + 1) % len(self.idle_frames_left)
