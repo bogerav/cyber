@@ -4,7 +4,7 @@ import pygame
 from player import Player
 from Cyber_Policeman import Policeman
 
-DISPLAY_W, DISPLAY_H = 800, 640
+DISPLAY_W, DISPLAY_H = 1024, 640
 FPS = 60
 
 policeman = Policeman()
@@ -25,13 +25,16 @@ class Bullet(pygame.sprite.Sprite):
             self.speedy = 10
 
     def update(self):
-            self.rect.x += self.speedy
+        self.rect.x += self.speedy
+        if self.rect.x > DISPLAY_W or self.rect.x < 0:
+            self.kill()
         # убить, если он заходит за верхнюю часть экрана
 
-    def collision(self, x, y):
+    def collision(self, kind, x, y):
         if -5 < ((x + 50 / 2) - (self.rect.x + self.rect.w / 2)) < 5:
             if -40 < ((y + 20 / 2) - (self.rect.y + self.rect.h / 2)) < 30:
-                print("жмыхнуло")
+                kind.kill()
+                self.kill()
                 
 
 
