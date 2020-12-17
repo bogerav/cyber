@@ -11,7 +11,7 @@ JUMP_POWER = 10
 GRAVITY = 0.35 # Сила, которая будет тянуть нас вниз
 
 
-class Player(pygame.sprite.Sprite):
+class Policeman(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
         self.startX = x
@@ -19,17 +19,17 @@ class Player(pygame.sprite.Sprite):
         self.LEFT_KEY, self.RIGHT_KEY, self.FACING_LEFT, self.JUMP = False, False, False, False
         self.load_frames()
         self.rect = self.idle_frames_left[0].get_rect()
-        self.rect.midbottom = (200, 900)
+        self.rect.midbottom = (0, 0)
         self.current_frame = 0
         self.last_updated = 0
         self.xvel = 0
         self.yvel = 0
         self.state = 'idle'
         self.current_image = self.idle_frames_left[0]
-        self.left_border, self.right_border = 0, 1920
+        self.left_border, self.right_border = 0, 800
         self.rect = pygame.Rect(x, y, WIDTH, HEIGHT)
         self.onGround = False  # На земле ли я?
-        self.winner = False
+
 
     def update(self, left, right, up, platforms):
         if up:
@@ -57,10 +57,8 @@ class Player(pygame.sprite.Sprite):
 
     def collide(self, xvel, yvel, platforms):
         for p in platforms:
-            if pygame.sprite.collide_rect(self, p): # если есть пересечение платформы с игроком
-                if isinstance(p, blocks.Escape):  # если коснулись п
-                    # ринцессы
-                    self.winner = True  # победили!!!
+            if pygame.sprite.collide_rect(self, p): # если есть пересечение платформы с полицейским
+
                 if xvel > 0:                      # если движется вправо
                     self.rect.right = p.rect.left # то не движется вправо
 
@@ -75,6 +73,7 @@ class Player(pygame.sprite.Sprite):
                 if yvel < 0:                      # если движется вверх
                     self.rect.top = p.rect.bottom # то не движется вверх
                     self.yvel = 0                 # и энергия прыжка пропадает
+
 
 
     def set_state(self):
@@ -104,18 +103,17 @@ class Player(pygame.sprite.Sprite):
                     self.current_image = self.walking_frames_right[self.current_frame]
 
     def load_frames(self):
-        my_spritesheet = Spritesheet('hero_run.png')
+        my_spritesheet = Spritesheet('policeman_walking.png')
         # pygame.image.load('MY_IMAGE_NAME.png').convert()
-        self.idle_frames_right = [my_spritesheet.parse_sprite("poppy_idle1.png")]
-        self.walking_frames_right = [my_spritesheet.parse_sprite("poppywalk1.png"),
-                                    my_spritesheet.parse_sprite("poppywalk2.png"),
-                                    my_spritesheet.parse_sprite("poppywalk3.png"),
-                                    my_spritesheet.parse_sprite("poppywalk4.png"),
-                                    my_spritesheet.parse_sprite("poppywalk5.png"),
-                                    my_spritesheet.parse_sprite("poppywalk6.png"),
-                                    my_spritesheet.parse_sprite("poppywalk7.png"),
-                                    my_spritesheet.parse_sprite("poppywalk8.png"),
-                                    my_spritesheet.parse_sprite("poppywalk9.png")]
+        self.idle_frames_right = [my_spritesheet.parse_sprite("policeman_frame_walk_idle.png")]
+        self.walking_frames_right = [my_spritesheet.parse_sprite("policeman_frame_walk_1.png"),
+                                     my_spritesheet.parse_sprite("policeman_frame_walk_2.png"),
+                                     my_spritesheet.parse_sprite("policeman_frame_walk_3.png"),
+                                     my_spritesheet.parse_sprite("policeman_frame_walk_4.png"),
+                                     my_spritesheet.parse_sprite("policeman_frame_walk_5.png"),
+                                     my_spritesheet.parse_sprite("policeman_frame_walk_6.png"),
+                                     my_spritesheet.parse_sprite("policeman_frame_walk_7.png"),
+                                     my_spritesheet.parse_sprite("policeman_frame_walk_8.png")]
         self.idle_frames_left = []
         for frame in self.idle_frames_right:
             self.idle_frames_left.append(pygame.transform.flip(frame, True, False))
