@@ -31,8 +31,8 @@ class Bullet(pygame.sprite.Sprite):
         # убить, если он заходит за верхнюю часть экрана
 
     def collision(self, kind, x, y):
-        if -5 < ((x + 50 / 2) - (self.rect.x + self.rect.w / 2)) < 5:
-            if -40 < ((y + 20 / 2) - (self.rect.y + self.rect.h / 2)) < 30:
+        if -5 < ((x + kind.rect.width / 2) - (self.rect.x + self.rect.w / 2)) < 5:
+            if -40 < ((y + kind.rect.height / 2) - (self.rect.y + self.rect.h / 2)) < 30:
                 if isinstance(kind, Policeman):
                     kind.kill()
                 else:
