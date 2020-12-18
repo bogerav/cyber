@@ -58,7 +58,7 @@ def level_1():
     bg = Surface(DISPLAY)  # Создание видимой поверхности
     # будем использовать как фон
     bg.blit(background_image, (0,0))  # Заливаем поверхность сплошным цветом
-    while levelnew < 5:
+    while counter < 5:
         if levelnew:
 
             hero = Player(55, 900)  # создаем героя по (x,y) координатам

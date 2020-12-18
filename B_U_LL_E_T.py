@@ -34,14 +34,15 @@ class Bullet(pygame.sprite.Sprite):
 
     def collision(self, kind, x, y):
         if -5 < ((x + kind.rect.width / 2) - (self.rect.x + self.rect.w / 2)) < 5:
-            if -40 < ((y + kind.rect.height / 2) - (self.rect.y + self.rect.h / 2)) < 30:
+            if -35 < ((y + kind.rect.height / 2) - (self.rect.y + self.rect.h / 2)) < 35:
                 if isinstance(kind, Policeman):
                     kind.kill()
                     self.kill()
                 elif isinstance(kind, Player):
                     kind.lives -= 1
                     self.kill()
-            elif -16 < ((y + kind.rect.height / 2) - (self.rect.y + self.rect.h / 2)) < 16:
+        elif -32 < ((x + kind.rect.width / 2) - (self.rect.x + self.rect.w / 2)) < 32:
+            if -16 < ((y + kind.rect.height / 2) - (self.rect.y + self.rect.h / 2)) < 16:
                 if isinstance(kind, block):
                     self.kill()
 
