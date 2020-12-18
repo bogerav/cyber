@@ -50,9 +50,6 @@ class Player(pygame.sprite.Sprite):
         if not self.onGround:
             self.yvel += GRAVITY
 
-        if self.lives == 0:
-            self.kill()
-            quit()
 
         self.onGround = False;  # Мы не знаем, когда мы на земле((
         self.rect.y += self.yvel
