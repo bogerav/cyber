@@ -1,6 +1,5 @@
 import pygame
 
-
 from objects.player import Player
 from objects.police import Policeman
 from objects.blocks import Platform
@@ -8,8 +7,8 @@ from objects.blocks import Platform
 DISPLAY_W, DISPLAY_H = 1024, 640
 FPS = 60
 
-policeman = Policeman(0,0)
-cat = Player(0,0)
+policeman = Policeman(0, 0)
+cat = Player(0, 0)
 block = Platform
 
 
@@ -20,7 +19,7 @@ class Bullet(pygame.sprite.Sprite):
         self.image = pygame.Surface((10, 20))
         self.current_image = pygame.image.load('../cyber/sprites/smoll_laser.png')
         self.rect = self.image.get_rect()
-        self.rect.midbottom = (x+kind.rect.width//2, y+kind.rect.height/2)
+        self.rect.midbottom = (x + kind.rect.width // 2, y + kind.rect.height / 2)
         if self.kind.FACING_LEFT:
             self.speedy = -10
         else:
@@ -45,7 +44,3 @@ class Bullet(pygame.sprite.Sprite):
             if -16 < ((y + kind.rect.height / 2) - (self.rect.y + self.rect.h / 2)) < 16:
                 if isinstance(kind, block):
                     self.kill()
-
-                
-
-

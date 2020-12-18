@@ -1,6 +1,5 @@
 import pygame
 
-
 from sprites.spritesheet import Spritesheet
 from objects import blocks
 
@@ -10,7 +9,7 @@ MOVE_SPEED = 5
 WIDTH = 20
 HEIGHT = 64
 JUMP_POWER = 10
-GRAVITY = 0.35 # Сила, которая будет тянуть нас вниз
+GRAVITY = 0.35  # Сила, которая будет тянуть нас вниз
 
 
 class Player(pygame.sprite.Sprite):
@@ -50,11 +49,9 @@ class Player(pygame.sprite.Sprite):
         if not self.onGround:
             self.yvel += GRAVITY
 
-
-        self.onGround = False;  # Мы не знаем, когда мы на земле((
+        self.onGround = False  # Мы не знаем, когда мы на земле((
         self.rect.y += self.yvel
         self.collide(0, self.yvel, platforms)
-
 
         self.rect.x += self.xvel  # переносим свои положение на xvel
         temp = self.collide(self.xvel, 0, platforms)
@@ -65,25 +62,25 @@ class Player(pygame.sprite.Sprite):
     def collide(self, xvel, yvel, platforms):
         temp = False
         for p in platforms:
-            if pygame.sprite.collide_rect(self, p): # если есть пересечение платформы с игроком
+            if pygame.sprite.collide_rect(self, p):  # если есть пересечение платформы с игроком
                 if isinstance(p, blocks.Escape):  # если коснулись п
                     self.counter += 1  # победили!!!
                     temp = True
                     break
-                if xvel > 0:                      # если движется вправо
-                    self.rect.right = p.rect.left # то не движется вправо
+                if xvel > 0:  # если движется вправо
+                    self.rect.right = p.rect.left  # то не движется вправо
 
-                if xvel < 0:                      # если движется влево
-                    self.rect.left = p.rect.right # то не движется влево
+                if xvel < 0:  # если движется влево
+                    self.rect.left = p.rect.right  # то не движется влево
 
-                if yvel > 0:                      # если падает вниз
-                    self.rect.bottom = p.rect.top # то не падает вниз
-                    self.onGround = True          # и становится на что-то твердое
-                    self.yvel = 0                 # и энергия падения пропадает
+                if yvel > 0:  # если падает вниз
+                    self.rect.bottom = p.rect.top  # то не падает вниз
+                    self.onGround = True  # и становится на что-то твердое
+                    self.yvel = 0  # и энергия падения пропадает
 
-                if yvel < 0:                      # если движется вверх
-                    self.rect.top = p.rect.bottom # то не движется вверх
-                    self.yvel = 0                 # и энергия прыжка пропадает
+                if yvel < 0:  # если движется вверх
+                    self.rect.top = p.rect.bottom  # то не движется вверх
+                    self.yvel = 0  # и энергия прыжка пропадает
         return temp
 
     def set_state(self):
@@ -92,12 +89,10 @@ class Player(pygame.sprite.Sprite):
             self.state = 'moving right'
         elif self.xvel < 0:
             self.state = 'moving left'
-        elif self.shoot and self.FACING_LEFT == False:
+        elif self.shoot and self.FACING_LEFT is False:
             self.state = 'shooting right'
-        elif self.shoot and self.FACING_LEFT == True:
+        elif self.shoot and self.FACING_LEFT is True:
             self.state = 'shooting left'
-
-
 
     def animate(self):
         now = pygame.time.get_ticks()
@@ -142,14 +137,14 @@ class Player(pygame.sprite.Sprite):
         # pygame.image.load('MY_IMAGE_NAME.png').convert()
         self.idle_frames_right = [my_spritesheet.parse_sprite("poppy_idle1.png")]
         self.walking_frames_right = [my_spritesheet.parse_sprite("poppywalk1.png"),
-                                    my_spritesheet.parse_sprite("poppywalk2.png"),
-                                    my_spritesheet.parse_sprite("poppywalk3.png"),
-                                    my_spritesheet.parse_sprite("poppywalk4.png"),
-                                    my_spritesheet.parse_sprite("poppywalk5.png"),
-                                    my_spritesheet.parse_sprite("poppywalk6.png"),
-                                    my_spritesheet.parse_sprite("poppywalk7.png"),
-                                    my_spritesheet.parse_sprite("poppywalk8.png"),
-                                    my_spritesheet.parse_sprite("poppywalk9.png")]
+                                     my_spritesheet.parse_sprite("poppywalk2.png"),
+                                     my_spritesheet.parse_sprite("poppywalk3.png"),
+                                     my_spritesheet.parse_sprite("poppywalk4.png"),
+                                     my_spritesheet.parse_sprite("poppywalk5.png"),
+                                     my_spritesheet.parse_sprite("poppywalk6.png"),
+                                     my_spritesheet.parse_sprite("poppywalk7.png"),
+                                     my_spritesheet.parse_sprite("poppywalk8.png"),
+                                     my_spritesheet.parse_sprite("poppywalk9.png")]
 
         self.shooting_frame_right = my_one_marv_spritesheet.parse_sprite("marv_frame_shot_1.png")
 
@@ -160,7 +155,3 @@ class Player(pygame.sprite.Sprite):
         self.walking_frames_left = []
         for frame in self.walking_frames_right:
             self.walking_frames_left.append(pygame.transform.flip(frame, True, False))
-
-
-
-

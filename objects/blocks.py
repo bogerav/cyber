@@ -23,4 +23,3 @@ class Escape(Platform):
         portal_surf = image.load('../cyber/sprites/portal.bmp')
         portal_surf.set_colorkey((255, 255, 255))
         self.current_image = portal_surf
-        

@@ -1,4 +1,3 @@
-import pygame
 from menu_and_tools.menu import *
 
 
@@ -27,8 +26,6 @@ class Game():
                 self.playing = False
             self.reset_keys()
 
-
-
     def check_events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -48,27 +45,26 @@ class Game():
     def reset_keys(self):
         self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
 
-    def draw_text(self, text, size, x, y ):
-        font = pygame.font.Font(self.font_name,size)
+    def draw_text(self, text, size, x, y):
+        font = pygame.font.Font(self.font_name, size)
         text_surface = font.render(text, True, (245, 239, 9))
         text_rect = text_surface.get_rect()
-        text_rect.center = (x,y)
-        self.display.blit(text_surface,text_rect)
+        text_rect.center = (x, y)
+        self.display.blit(text_surface, text_rect)
 
-    def draw_text2(self, text, size, x, y ):
-        font = pygame.font.Font(self.font_name,size)
+    def draw_text2(self, text, size, x, y):
+        font = pygame.font.Font(self.font_name, size)
         text_surface = font.render(text, True, (0, 0, 0))
         text_rect = text_surface.get_rect()
-        text_rect.center = (x,y)
-        self.display.blit(text_surface,text_rect)
+        text_rect.center = (x, y)
+        self.display.blit(text_surface, text_rect)
 
-    def draw_text3(self, text, size, x, y ):
-        font = pygame.font.Font(self.font_name,size)
+    def draw_text3(self, text, size, x, y):
+        font = pygame.font.Font(self.font_name, size)
         text_surface = font.render(text, True, (255, 0, 89))
         text_rect = text_surface.get_rect()
-        text_rect.center = (x,y)
-        self.display.blit(text_surface,text_rect)
-
+        text_rect.center = (x, y)
+        self.display.blit(text_surface, text_rect)
 
     def start_game(self):
         self.running, self.playing = False, False
@@ -76,7 +72,3 @@ class Game():
         pygame.mixer.music.load('../cyber/music/Sound2.ogg')
         pygame.mixer.music.play()
         pygame.mixer.music.set_volume(0.25)
-
-
-
-
