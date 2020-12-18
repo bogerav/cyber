@@ -1,5 +1,5 @@
 import pygame
-from spritesheet import Spritesheet
+from sprites.spritesheet import Spritesheet
 
 DISPLAY_W, DISPLAY_H = 800, 640
 FPS = 60
@@ -114,8 +114,8 @@ class Policeman(pygame.sprite.Sprite):
                     self.current_image = self.walking_frames_right[self.current_frame]
 
     def load_frames(self):
-        my_spritesheet = Spritesheet('../sprites and images/policeman_walking_white.png')
-        my_two_police_shoot_spritesheet = Spritesheet('../sprites and images/cyber_shot.png')
+        my_spritesheet = Spritesheet('../sprites/policeman_walking_white.png')
+        my_two_police_shoot_spritesheet = Spritesheet('../sprites/cyber_shot.png')
         self.shooting_frame_right = my_two_police_shoot_spritesheet.parse_sprite("policeman_frame_shoot_1.png")
         self.shooting_frame_left = my_two_police_shoot_spritesheet.parse_sprite("policeman_frame_shoot_2.png")
 

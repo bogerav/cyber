@@ -1,7 +1,7 @@
 import pygame
 
 
-from spritesheet import Spritesheet
+from sprites.spritesheet import Spritesheet
 from objects import blocks
 
 DISPLAY_W, DISPLAY_H = 800, 640
@@ -136,8 +136,8 @@ class Player(pygame.sprite.Sprite):
                 self.shoot = False
 
     def load_frames(self):
-        my_spritesheet = Spritesheet('../sprites and images/hero_run.png')
-        my_one_marv_spritesheet = Spritesheet('../sprites and images/marv_deadshot.png')
+        my_spritesheet = Spritesheet('../sprites/hero_run.png')
+        my_one_marv_spritesheet = Spritesheet('../sprites/marv_deadshot.png')
 
         # pygame.image.load('MY_IMAGE_NAME.png').convert()
         self.idle_frames_right = [my_spritesheet.parse_sprite("poppy_idle1.png")]

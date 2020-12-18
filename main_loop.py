@@ -1,5 +1,5 @@
 
-from game import Game
+from menu_and_tools.game import Game
 from levels.levels import level_1
 
 

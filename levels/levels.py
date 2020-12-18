@@ -2,7 +2,7 @@ from pygame import *
 from objects.player import Player
 from objects.blocks import Platform, Escape
 import pygame
-from camera import Camera
+from menu_and_tools.camera import Camera
 from objects.police import Policeman
 from objects.B_U_LL_E_T import Bullet
 import json
@@ -27,8 +27,7 @@ PLATFORM_WIDTH = 32
 PLATFORM_HEIGHT = 32
 PLATFORM_COLOR = (255, 255, 255)
 
-
-hero = Player(55, 1000) # создаём игрока с координатами (х, у)
+hero = Player(55, 1000)  # создаём игрока с координатами (х, у)
 
 bullets = pygame.sprite.Group()
 
@@ -38,8 +37,8 @@ def camera_configure(camera, target_rect):  # функция конфига ка
     _, _, w, h = camera
     l, t = -l + DISPLAY_W / 2, -t + DISPLAY_H / 2
 
-    l = min(0, l)  # Не движемся дальше левой границы
-    l = max(-(camera.width - DISPLAY_W), l)  # Не движемся дальше правой границы
+    leng = min(0, l)  # Не движемся дальше левой границы
+    leng = max(-(camera.width - DISPLAY_W), leng)  # Не движемся дальше правой границы
     t = max(-(camera.height - DISPLAY_H), t)  # Не движемся дальше нижней границы
     t = min(0, t)  # Не движемся дальше верхней границы
 
@@ -47,7 +46,6 @@ def camera_configure(camera, target_rect):  # функция конфига ка
 
 
 def level_1():
-
     running = True
     levelnew = True
     counter = 0
@@ -57,15 +55,15 @@ def level_1():
     pygame.display.set_caption("Cyber carnage")  # Пишем в шапку
     bg = Surface(DISPLAY)  # Создание видимой поверхности
     # будем использовать как фон  # Заливаем поверхность сплошным цветом
-    for i in range (900):
+    for i in range(900):
         screen.blit(plotimage, (0, 0))
         pygame.display.update()
     while True:
         if counter > 3:
             running = False
             counter = 0
-        if running == False:
-            for i in range (100):
+        if not running:
+            for i in range(100):
                 screen.blit(gameover, (0, 0))
                 pygame.display.update()  # обновление и вывод всех изменений на экран
             quit()
@@ -132,7 +130,7 @@ def level_1():
                         left, hero.FACING_LEFT = True, True
                     elif event.key == pygame.K_RIGHT:
                         right, hero.FACING_LEFT = True, False
-                    elif event.key == pygame.K_UP and hero.JUMP == False:
+                    elif event.key == pygame.K_UP and hero.JUMP is False:
                         up = True
                     elif event.key == pygame.K_x:
                         hero.shoot = True
@@ -148,7 +146,7 @@ def level_1():
 
             screen.blit(bg, (0, 0))  # Каждую итерацию необходимо всё перерисовывать
 
-            for bullet in bullets: # обработка пуль
+            for bullet in bullets:  # обработка пуль
                 bullet.update()
                 for ent in entities:
                     bullet.collision(ent, ent.rect.x, ent.rect.y)
@@ -156,7 +154,7 @@ def level_1():
 
             camera.update(hero)  # центризируем камеру относительно персонажа
 
-            if hero.update(left, right, up, platforms) == True:
+            if hero.update(left, right, up, platforms) is True:
                 levelnew = True
                 counter += 1
                 break
@@ -180,6 +178,5 @@ def level_1():
                 screen.blit(heart_image, (100, 50))
             if hero.lives == 0:
                 running = False
-
 
             pygame.display.update()  # обновление и вывод всех изменений на экран
