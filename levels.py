@@ -173,6 +173,7 @@ def level_1():
         for pol in policemen:
             pol.update(False, False, False, platforms)
             if pol.see_pl(hero):
+                pol.shoot = True
                 bullet = Bullet(pol, pol.rect.x, pol.rect.y)
                 bullets.add(bullet)
         # entities.draw(screen) # отображение
