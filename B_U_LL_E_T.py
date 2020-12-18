@@ -2,12 +2,12 @@ import pygame
 
 
 from player import Player
-from Cyber_Policeman import Policeman
+from newpolice import Policeman
 
 DISPLAY_W, DISPLAY_H = 1024, 640
 FPS = 60
 
-policeman = Policeman()
+policeman = Policeman(0,0)
 cat = Player()
 
 
@@ -33,8 +33,10 @@ class Bullet(pygame.sprite.Sprite):
     def collision(self, kind, x, y):
         if -5 < ((x + 50 / 2) - (self.rect.x + self.rect.w / 2)) < 5:
             if -40 < ((y + 20 / 2) - (self.rect.y + self.rect.h / 2)) < 30:
-                kind.kill()
-                self.kill()
+                if isinstance(kind, Policeman):
+                    kind.kill()
+                else:
+                    kind.lives -= 1
                 
 
 

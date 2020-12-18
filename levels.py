@@ -156,6 +156,7 @@ def level_1():
             bullet.update()
             for pol in policemen:
                 bullet.collision(pol, pol.rect.x, pol.rect.y)
+            bullet.collision(hero, hero.rect.x, hero.rect.y)
             screen.blit(bullet.current_image, camera.apply(bullet))
 
         camera.update(hero)  # центризируем камеру относительно персонажа

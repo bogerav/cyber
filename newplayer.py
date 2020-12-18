@@ -32,6 +32,7 @@ class Player(pygame.sprite.Sprite):
         self.rect = pygame.Rect(x, y, WIDTH, HEIGHT)
         self.onGround = False  # На земле ли я?
         self.winner = False
+        self.lives = 3
 
     def update(self, left, right, up, platforms):
         if up:
@@ -47,6 +48,9 @@ class Player(pygame.sprite.Sprite):
             self.xvel = 0
         if not self.onGround:
             self.yvel += GRAVITY
+
+        if self.lives == 0:
+            self.kill()
 
         self.onGround = False;  # Мы не знаем, когда мы на земле((
         self.rect.y += self.yvel
