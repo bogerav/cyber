@@ -150,6 +150,7 @@ def level_1():
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
+                    quit()
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LEFT:
                         left, hero.FACING_LEFT = True, True
