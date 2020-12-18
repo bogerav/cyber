@@ -56,7 +56,13 @@ def level_1():
     pygame.display.set_caption("Cyber carnage")  # Пишем в шапку
     bg = Surface(DISPLAY)  # Создание видимой поверхности
     # будем использовать как фон  # Заливаем поверхность сплошным цветом
-    while counter <= 4:
+    while True:
+        if counter > 3:
+            running = False
+            counter = 0
+        if running == False:
+            screen.fill((0, 0, 0))
+            pygame.display.update()
         bg.blit(bg_images[counter], (0, 0))
         if levelnew:
             hero = Player(55, 900)  # создаем героя по (x,y) координатам

@@ -10,7 +10,7 @@ MOVE_SPEED = 5
 WIDTH = 20
 HEIGHT = 64
 JUMP_POWER = 10
-GRAVITY = 0.35 # Сила, которая будет тянуть нас вниз
+GRAVITY = 0.1 # Сила, которая будет тянуть нас вниз
 
 
 class Player(pygame.sprite.Sprite):
