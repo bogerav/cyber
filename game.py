@@ -75,5 +75,10 @@ class Game():
     def start_game(self):
         self.running, self.playing = False, False
         self.curr_menu.run_display = False
+        pygame.mixer.music.load('Musicgame.ogg')
+        pygame.mixer.music.play()
+        pygame.mixer.music.set_volume(0.1)
+
+
 
 

@@ -1,9 +1,5 @@
-import pygame
-from player import Player
-from Cyber_Policeman import Policeman
-from camera import *
+
 from game import Game
-import random
 from levels import level_1
 
 ################################# LOAD UP A BASIC WINDOW AND CLOCK #################################
