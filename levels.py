@@ -17,6 +17,7 @@ DISPLAY = (DISPLAY_W, DISPLAY_H)  # Группируем ширину и выс�
 clock = pygame.time.Clock()
 
 background_image = image.load("blue_city.jpg")
+heart_image = pygame.image.load("heart.png")
 PLATFORM_WIDTH = 32
 PLATFORM_HEIGHT = 32
 PLATFORM_COLOR = (255, 255, 255)
@@ -26,6 +27,7 @@ hero = Player(55, 1000)
 g = Game()
 
 bullets = pygame.sprite.Group()
+
 
 
 def camera_configure(camera, target_rect):
@@ -124,7 +126,6 @@ def level_1():
     bullets = pygame.sprite.Group()
 
     while running:  # Основной цикл программы
-        timer.tick(60)
         for event in pygame.event.get():
             if event.type == pygame.QUIT or hero.winner == True:
                 running = False
@@ -147,9 +148,6 @@ def level_1():
                 elif event.key == pygame.K_UP:
                     up = False
 
-
-
-
         screen.blit(bg, (0, 0))  # Каждую итерацию необходимо всё перерисовывать
 
 
@@ -159,6 +157,15 @@ def level_1():
                 bullet.collision(pol, pol.rect.x, pol.rect.y)
             bullet.collision(hero, hero.rect.x, hero.rect.y)
             screen.blit(bullet.current_image, camera.apply(bullet))
+        if hero.lives == 3:
+            screen.blit(heart_image, (100, 50))
+            screen.blit(heart_image, (150, 50))
+            screen.blit(heart_image, (200, 50))
+        if hero.lives == 2:
+            screen.blit(heart_image, (100, 50))
+            screen.blit(heart_image, (150, 50))
+        if hero.lives == 1:
+            screen.blit(heart_image, (100, 50))
 
         camera.update(hero)  # центризируем камеру относительно персонажа
         hero.update(left, right, up, platforms)
@@ -170,5 +177,6 @@ def level_1():
         # entities.draw(screen) # отображение
         for e in entities:
             screen.blit(e.current_image, camera.apply(e))
+
 
         pygame.display.update()  # обновление и вывод всех изменений на экран

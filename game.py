@@ -8,7 +8,9 @@ class Game():
         self.running, self.playing = True, False
         self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
         self.DISPLAY_W, self.DISPLAY_H = 1280, 720
+        self.DISPLAY_W2, self.DISPLAY_H2 = 800, 640
         self.display = pygame.Surface((self.DISPLAY_W, self.DISPLAY_H))
+        self.display_for_heart = pygame.Surface((self.DISPLAY_W2, self.DISPLAY_H2))
         self.window = pygame.display.set_mode(((self.DISPLAY_W, self.DISPLAY_H)))
         self.font_name = 'Lazer84.TTF'
         self.BLACK, self.WHITE = (0, 0, 0), (255, 255, 255)
@@ -18,6 +20,7 @@ class Game():
         self.curr_menu = self.main_menu
         self.sprite_image = pygame.image.load("e.jpg")
         self.sprite_image = pygame.transform.smoothscale(self.sprite_image, (1280, 720))
+        self.heart_image = pygame.image.load("heart.png")
 
     def game_loop(self):
         while self.playing:
@@ -72,4 +75,5 @@ class Game():
     def start_game(self):
         self.running, self.playing = False, False
         self.curr_menu.run_display = False
+
 

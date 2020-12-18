@@ -58,6 +58,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.y += self.yvel
         self.collide(0, self.yvel, platforms)
 
+
         self.rect.x += self.xvel  # переносим свои положение на xvel
         self.collide(self.xvel, 0, platforms)
         self.set_state()
