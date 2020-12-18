@@ -156,12 +156,15 @@ def level_1():
                 bullet.collision(pol, pol.rect.x, pol.rect.y)
             bullet.collision(hero, hero.rect.x, hero.rect.y)
             screen.blit(bullet.current_image, camera.apply(bullet))
+        if hero.lives == 3:
+            screen.blit(heart_image, (100, 50))
+            screen.blit(heart_image, (150, 50))
+            screen.blit(heart_image, (200, 50))
+        if hero.lives == 2:
+            screen.blit(heart_image, (100, 50))
+            screen.blit(heart_image, (150, 50))
         if hero.lives == 1:
-            screen.blit(heart_image, (-600, -600))
-            if hero.lives == 2:
-                screen.blit(heart_image, (-600, -500))
-                if hero.lives == 3:
-                    screen.blit(heart_image, (-600, -500))
+            screen.blit(heart_image, (100, 50))
 
         camera.update(hero)  # центризируем камеру относительно персонажа
         hero.update(left, right, up, platforms)
