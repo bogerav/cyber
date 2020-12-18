@@ -136,6 +136,7 @@ def level_1():
                 elif event.key == pygame.K_UP and hero.JUMP == False:
                     up = True
                 elif event.key == pygame.K_x:
+                    hero.shoot = True
                     bullet = Bullet(hero, hero.rect.x, hero.rect.y)
                     bullets.add(bullet)
             if event.type == pygame.KEYUP:

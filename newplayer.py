@@ -33,6 +33,7 @@ class Player(pygame.sprite.Sprite):
         self.onGround = False  # На земле ли я?
         self.winner = False
         self.lives = 3
+        self.shoot = False
 
     def update(self, left, right, up, platforms):
         if up:
@@ -90,6 +91,12 @@ class Player(pygame.sprite.Sprite):
             self.state = 'moving right'
         elif self.xvel < 0:
             self.state = 'moving left'
+        elif self.shoot and self.FACING_LEFT == False:
+            self.state = 'shooting right'
+        elif self.shoot and self.FACING_LEFT == True:
+            self.state = 'shooting left'
+
+
 
     def animate(self):
         now = pygame.time.get_ticks()
@@ -101,18 +108,36 @@ class Player(pygame.sprite.Sprite):
                     self.current_image = self.idle_frames_left[self.current_frame]
                 elif not self.FACING_LEFT:
                     self.current_image = self.idle_frames_right[self.current_frame]
-        else:
+        elif self.state == 'moving left' or self.state == 'moving right':
             if now - self.last_updated > 100:
                 self.last_updated = now
                 self.current_frame = (self.current_frame + 1) % len(self.walking_frames_left)
-                if self.state == 'moving left':
-                    self.current_image = self.walking_frames_left[self.current_frame]
-                elif self.state == 'moving right':
-                    self.current_image = self.walking_frames_right[self.current_frame]
 
+                if self.state == 'moving left':
+                    if self.shoot:
+                        self.current_image = self.shooting_frame_left
+                        self.shoot = False
+                    else:
+                        self.current_image = self.walking_frames_left[self.current_frame]
+
+                elif self.state == 'moving right':
+                    if self.shoot:
+                        self.current_image = self.shooting_frame_right
+                        self.shoot = False
+                    else:
+                        self.current_image = self.walking_frames_right[self.current_frame]
+        else:
+            if self.state == 'shooting right':
+                self.current_image = self.shooting_frame_right
+                self.shoot = False
+            if self.state == 'shooting left':
+                self.current_image = self.shooting_frame_left
+                self.shoot = False
 
     def load_frames(self):
         my_spritesheet = Spritesheet('hero_run.png')
+        my_one_marv_spritesheet = Spritesheet('marv_deadshot.png')
+
         # pygame.image.load('MY_IMAGE_NAME.png').convert()
         self.idle_frames_right = [my_spritesheet.parse_sprite("poppy_idle1.png")]
         self.walking_frames_right = [my_spritesheet.parse_sprite("poppywalk1.png"),
@@ -124,9 +149,17 @@ class Player(pygame.sprite.Sprite):
                                     my_spritesheet.parse_sprite("poppywalk7.png"),
                                     my_spritesheet.parse_sprite("poppywalk8.png"),
                                     my_spritesheet.parse_sprite("poppywalk9.png")]
+
+        self.shooting_frame_right = my_one_marv_spritesheet.parse_sprite("marv_frame_shot_1.png")
+
+        self.shooting_frame_left = pygame.transform.flip(self.shooting_frame_right, True, False)
         self.idle_frames_left = []
         for frame in self.idle_frames_right:
             self.idle_frames_left.append(pygame.transform.flip(frame, True, False))
         self.walking_frames_left = []
         for frame in self.walking_frames_right:
             self.walking_frames_left.append(pygame.transform.flip(frame, True, False))
+
+
+
+
