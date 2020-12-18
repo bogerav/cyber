@@ -68,7 +68,6 @@ def level_1():
                 screen2.blit(gameover, (0, 0))
                 pygame.display.update()  # обновление и вывод всех изменений на экран
             quit()
-            quit()
         bg.blit(bg_images[counter], (0, 0))
         if levelnew:
             hero = Player(55, 900)  # создаем героя по (x,y) координатам
