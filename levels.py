@@ -171,9 +171,8 @@ def level_1():
 
             for bullet in bullets:
                 bullet.update()
-                for pol in policemen:
-                    bullet.collision(pol, pol.rect.x, pol.rect.y)
-                bullet.collision(hero, hero.rect.x, hero.rect.y)
+                for ent in entities:
+                    bullet.collision(ent, ent.rect.x, ent.rect.y)
                 screen.blit(bullet.current_image, camera.apply(bullet))
 
 

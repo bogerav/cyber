@@ -3,12 +3,14 @@ import pygame
 
 from player import Player
 from newpolice import Policeman
+from blocks import Platform
 
 DISPLAY_W, DISPLAY_H = 1024, 640
 FPS = 60
 
 policeman = Policeman(0,0)
 cat = Player()
+block = Platform
 
 
 class Bullet(pygame.sprite.Sprite):
@@ -35,8 +37,13 @@ class Bullet(pygame.sprite.Sprite):
             if -40 < ((y + kind.rect.height / 2) - (self.rect.y + self.rect.h / 2)) < 30:
                 if isinstance(kind, Policeman):
                     kind.kill()
+                    self.kill()
+                elif isinstance(kind, block):
+                    self.kill()
                 else:
                     kind.lives -= 1
+                    self.kill()
+
                 
 
 
