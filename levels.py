@@ -134,7 +134,7 @@ def level_1():
                     left, hero.FACING_LEFT = True, True
                 elif event.key == pygame.K_RIGHT:
                     right, hero.FACING_LEFT = True, False
-                elif event.key == pygame.K_z and hero.JUMP == False:
+                elif event.key == pygame.K_UP and hero.JUMP == False:
                     up = True
                 elif event.key == pygame.K_x:
                     hero.shoot = True
@@ -145,7 +145,7 @@ def level_1():
                     left = False
                 elif event.key == pygame.K_RIGHT:
                     right = False
-                elif event.key == pygame.K_z:
+                elif event.key == pygame.K_UP:
                     up = False
 
         screen.blit(bg, (0, 0))  # Каждую итерацию необходимо всё перерисовывать
