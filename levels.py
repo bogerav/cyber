@@ -1,5 +1,4 @@
 import pygame
-import time
 from pygame import *
 from newplayer import Player
 from blocks import Platform, Escape
