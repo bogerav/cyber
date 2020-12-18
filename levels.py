@@ -126,6 +126,7 @@ def level_1():
     bullets = pygame.sprite.Group()
 
     while running:  # Основной цикл программы
+        timer.tick(60)
         for event in pygame.event.get():
             if event.type == pygame.QUIT or hero.winner == True:
                 running = False
