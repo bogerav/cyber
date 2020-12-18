@@ -18,9 +18,10 @@ DISPLAY = (DISPLAY_W, DISPLAY_H)  # Группируем ширину и выс�
 clock = pygame.time.Clock()
 
 background_image1 = image.load("blue_city.jpg")
-background_image2 = image.load('city_rooftops.jpg')
+background_image2 = image.load('backgr2.jpg')
 background_image3 = image.load('rooftops_x.jpg')
-bg_images = [background_image1, background_image2, background_image3]
+background_image4 = image.load('backgr4.jpg')
+bg_images = [background_image1, background_image2, background_image3, background_image4]
 heart_image = pygame.image.load("heart.png")
 PLATFORM_WIDTH = 32
 PLATFORM_HEIGHT = 32
@@ -60,7 +61,7 @@ def level_1():
     pygame.display.set_caption("Cyber carnage")  # Пишем в шапку
     bg = Surface(DISPLAY)  # Создание видимой поверхности
     # будем использовать как фон  # Заливаем поверхность сплошным цветом
-    while counter < 5:
+    while counter <= 4:
         bg.blit(bg_images[counter], (0, 0))
         if levelnew:
             hero = Player(55, 900)  # создаем героя по (x,y) координатам
