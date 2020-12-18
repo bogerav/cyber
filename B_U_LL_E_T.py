@@ -38,12 +38,13 @@ class Bullet(pygame.sprite.Sprite):
                 if isinstance(kind, Policeman):
                     kind.kill()
                     self.kill()
-                elif isinstance(kind, block):
-                    self.kill()
-                else:
+                elif isinstance(kind, Player):
                     kind.lives -= 1
                     self.kill()
-
+        if -5 < ((x + kind.rect.width / 2) - (self.rect.x + self.rect.w / 2)) < 5:
+            if -16 < ((y + kind.rect.height / 2) - (self.rect.y + self.rect.h / 2)) < 16:
+                if isinstance(kind, block):
+                    self.kill()
                 
 
 
