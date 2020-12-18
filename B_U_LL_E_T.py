@@ -1,7 +1,7 @@
 import pygame
 
 
-from player import Player
+from newplayer import Player
 from newpolice import Policeman
 from blocks import Platform
 
@@ -9,7 +9,7 @@ DISPLAY_W, DISPLAY_H = 1024, 640
 FPS = 60
 
 policeman = Policeman(0,0)
-cat = Player()
+cat = Player(0,0)
 block = Platform
 
 
@@ -41,10 +41,10 @@ class Bullet(pygame.sprite.Sprite):
                 elif isinstance(kind, Player):
                     kind.lives -= 1
                     self.kill()
-        if -5 < ((x + kind.rect.width / 2) - (self.rect.x + self.rect.w / 2)) < 5:
-            if -16 < ((y + kind.rect.height / 2) - (self.rect.y + self.rect.h / 2)) < 16:
+            elif -16 < ((y + kind.rect.height / 2) - (self.rect.y + self.rect.h / 2)) < 16:
                 if isinstance(kind, block):
                     self.kill()
+
                 
 
 
