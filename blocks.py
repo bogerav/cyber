@@ -14,7 +14,7 @@ class Platform(sprite.Sprite):
         self.image = Surface((PLATFORM_WIDTH, PLATFORM_HEIGHT))
         self.image.fill(Color(PLATFORM_COLOR))
         self.rect = Rect(x, y, PLATFORM_WIDTH, PLATFORM_HEIGHT)
-        self.current_image = image.load("platform.png")
+        self.current_image = image.load("thisisit.jpg")
 
 
 class Escape(Platform):

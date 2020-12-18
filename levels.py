@@ -16,7 +16,7 @@ DISPLAY = (DISPLAY_W, DISPLAY_H)  # Группируем ширину и выс�
 
 clock = pygame.time.Clock()
 
-BACKGROUND_COLOR = (0, 0, 255)
+background_image = image.load("blue_city.jpg")
 PLATFORM_WIDTH = 32
 PLATFORM_HEIGHT = 32
 PLATFORM_COLOR = (255, 255, 255)
@@ -51,7 +51,7 @@ def level_1():
     pygame.display.set_caption("Cyber carnage")  # Пишем в шапку
     bg = Surface(DISPLAY)  # Создание видимой поверхности
     # будем использовать как фон
-    bg.fill(BACKGROUND_COLOR)  # Заливаем поверхность сплошным цветом
+    bg.blit(background_image, (0,0))  # Заливаем поверхность сплошным цветом
 
     hero = Player(55, 900)  # создаем героя по (x,y) координатам
     left = right = False  # по умолчанию - стоим
