@@ -1,6 +1,6 @@
 import pygame
 from spritesheet import Spritesheet
-import blocks
+import time
 
 DISPLAY_W, DISPLAY_H = 800, 640
 FPS = 60
@@ -22,6 +22,7 @@ class Policeman(pygame.sprite.Sprite):
         self.rect.midbottom = (0, 0)
         self.current_frame = 0
         self.last_updated = 0
+        self.settimer = 0
         self.xvel = 0
         self.yvel = 0
         self.state = 'idle'
@@ -45,6 +46,8 @@ class Policeman(pygame.sprite.Sprite):
             self.xvel = 0
         if not self.onGround:
             self.yvel += GRAVITY
+
+
 
         self.onGround = False;  # Мы не знаем, когда мы на земле((
         self.rect.y += self.yvel
@@ -120,3 +123,21 @@ class Policeman(pygame.sprite.Sprite):
         self.walking_frames_left = []
         for frame in self.walking_frames_right:
             self.walking_frames_left.append(pygame.transform.flip(frame, True, False))
+
+    def see_pl(self, player):
+        moment = pygame.time.get_ticks()
+        if moment - self.settimer > 1000:
+            self.settimer = moment
+            if -30 < player.rect.y - self.rect.y < 30:
+                temp = True
+                if player.rect.x - self.rect.x > 0:
+                    self.FACING_LEFT = False
+                else:
+                    self.FACING_LEFT = True
+            else:
+                temp = False
+        else:
+            temp = False
+        return temp
+
+

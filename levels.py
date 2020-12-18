@@ -1,4 +1,5 @@
 import pygame
+import time
 from pygame import *
 from newplayer import Player
 from blocks import Platform, Escape
@@ -161,7 +162,10 @@ def level_1():
         camera.update(hero)  # центризируем камеру относительно персонажа
         hero.update(left, right, up, platforms)
         for pol in policemen:
-            pol.update(False, False, False, platforms)# передвижение
+            pol.update(False, False, False, platforms)
+            if pol.see_pl(hero):
+                bullet = Bullet(pol, pol.rect.x, pol.rect.y)
+                bullets.add(bullet)
         # entities.draw(screen) # отображение
         for e in entities:
             screen.blit(e.current_image, camera.apply(e))
