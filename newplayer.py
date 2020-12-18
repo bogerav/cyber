@@ -31,9 +31,9 @@ class Player(pygame.sprite.Sprite):
         self.left_border, self.right_border = 0, 1920
         self.rect = pygame.Rect(x, y, WIDTH, HEIGHT)
         self.onGround = False  # На земле ли я?
-        self.winner = False
         self.lives = 3
         self.shoot = False
+        self.counter = 0
 
     def update(self, left, right, up, platforms):
         if up:
@@ -60,16 +60,19 @@ class Player(pygame.sprite.Sprite):
 
 
         self.rect.x += self.xvel  # переносим свои положение на xvel
-        self.collide(self.xvel, 0, platforms)
+        temp = self.collide(self.xvel, 0, platforms)
         self.set_state()
         self.animate()
+        return temp
 
     def collide(self, xvel, yvel, platforms):
+        temp = False
         for p in platforms:
             if pygame.sprite.collide_rect(self, p): # если есть пересечение платформы с игроком
                 if isinstance(p, blocks.Escape):  # если коснулись п
-                    # ринцессы
-                    self.winner = True  # победили!!!
+                    self.counter += 1  # победили!!!
+                    temp = True
+                    break
                 if xvel > 0:                      # если движется вправо
                     self.rect.right = p.rect.left # то не движется вправо
 
@@ -84,7 +87,7 @@ class Player(pygame.sprite.Sprite):
                 if yvel < 0:                      # если движется вверх
                     self.rect.top = p.rect.bottom # то не движется вверх
                     self.yvel = 0                 # и энергия прыжка пропадает
-
+        return temp
 
     def set_state(self):
         self.state = ' idle'
