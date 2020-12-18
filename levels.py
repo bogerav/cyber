@@ -28,15 +28,12 @@ PLATFORM_HEIGHT = 32
 PLATFORM_COLOR = (255, 255, 255)
 
 
-
-hero = Player(55, 1000)
-g = Game()
+hero = Player(55, 1000) # создаём игрока с координатами (х, у)
 
 bullets = pygame.sprite.Group()
 
 
-
-def camera_configure(camera, target_rect):
+def camera_configure(camera, target_rect):  # функция конфига камеры
     l, t, _, _ = target_rect
     _, _, w, h = camera
     l, t = -l + DISPLAY_W / 2, -t + DISPLAY_H / 2
@@ -53,9 +50,7 @@ def level_1():
     running = True
     levelnew = True
     counter = 0
-    while g.running:
-        g.curr_menu.display_menu()
-        g.game_loop()
+
     pygame.init()  # Инициация PyGame, обязательная строчка
     screen = pygame.display.set_mode(DISPLAY)  # Создаем окошко
     pygame.display.set_caption("Cyber carnage")  # Пишем в шапку
@@ -72,10 +67,9 @@ def level_1():
             policemen = pygame.sprite.Group()
             platforms = []  # то, во что мы будем врезаться или опираться
 
-
             entities.add(hero)
 
-            with open ('all_levels') as f:
+            with open('all_levels') as f:
                 data = json.load(f)
                 level1 = data['level1']
                 level2 = data['level2']
@@ -84,37 +78,7 @@ def level_1():
 
             levels_list = [level1, level2, level3, level4]
 
-            level = [
-                "----------------------------------",
-                "-                                -",
-                "-                                -",
-                "-                               E-",
-                "-              -----             -",
-                "-                       ----------",
-                "-                                -",
-                "-------                          -",
-                "-                                -",
-                "-          ---                   -",
-                "-                  P             -",
-                "-                -----           -",
-                "-                                -",
-                "-                  P             -",
-                "-------    -----------------------",
-                "-                                -",
-                "-       P                        -",
-                "-     -----                      -",
-                "-                                -",
-                "-                 -----          -",
-                "-                                -",
-                "-                                -",
-                "-          -----                 -",
-                "-                                -",
-                "-                      P         -",
-                "-                    -----       -",
-                "-        ------                  -",
-                "-                                -",
-                "-                                -",
-                "----------------------------------"]
+            level = levels_list[0]
 
             timer = pygame.time.Clock()
             x = y = 0  # координаты
@@ -172,15 +136,14 @@ def level_1():
 
             screen.blit(bg, (0, 0))  # Каждую итерацию необходимо всё перерисовывать
 
-
-            for bullet in bullets:
+            for bullet in bullets: # обработка пуль
                 bullet.update()
                 for ent in entities:
                     bullet.collision(ent, ent.rect.x, ent.rect.y)
                 screen.blit(bullet.current_image, camera.apply(bullet))
 
-
             camera.update(hero)  # центризируем камеру относительно персонажа
+
             if hero.update(left, right, up, platforms) == True:
                 levelnew = True
                 counter += 1
@@ -191,7 +154,7 @@ def level_1():
                     pol.shoot = True
                     bullet = Bullet(pol, pol.rect.x, pol.rect.y)
                     bullets.add(bullet)
-            # entities.draw(screen) # отображение
+
             for e in entities:
                 screen.blit(e.current_image, camera.apply(e))
             if hero.lives == 3:
