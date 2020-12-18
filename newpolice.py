@@ -106,7 +106,7 @@ class Policeman(pygame.sprite.Sprite):
                     self.current_image = self.walking_frames_right[self.current_frame]
 
     def load_frames(self):
-        my_spritesheet = Spritesheet('policeman_walking.png')
+        my_spritesheet = Spritesheet('policeman_walking_white.png')
         # pygame.image.load('MY_IMAGE_NAME.png').convert()
         self.idle_frames_right = [my_spritesheet.parse_sprite("policeman_frame_walk_idle.png")]
         self.walking_frames_right = [my_spritesheet.parse_sprite("policeman_frame_walk_1.png"),
