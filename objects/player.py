@@ -10,7 +10,7 @@ MOVE_SPEED = 5
 WIDTH = 20
 HEIGHT = 64
 JUMP_POWER = 10
-GRAVITY = 0.1 # Сила, которая будет тянуть нас вниз
+GRAVITY = 0.35 # Сила, которая будет тянуть нас вниз
 
 
 class Player(pygame.sprite.Sprite):
@@ -136,8 +136,8 @@ class Player(pygame.sprite.Sprite):
                 self.shoot = False
 
     def load_frames(self):
-        my_spritesheet = Spritesheet('../sprites/hero_run.png')
-        my_one_marv_spritesheet = Spritesheet('../sprites/marv_deadshot.png')
+        my_spritesheet = Spritesheet('../cyber/sprites/hero_run.png')
+        my_one_marv_spritesheet = Spritesheet('../cyber/sprites/marv_deadshot.png')
 
         # pygame.image.load('MY_IMAGE_NAME.png').convert()
         self.idle_frames_right = [my_spritesheet.parse_sprite("poppy_idle1.png")]

@@ -49,7 +49,7 @@ class Policeman(pygame.sprite.Sprite):
 
 
 
-        self.onGround = False;  # Мы не знаем, когда мы на земле((
+        self.onGround = False  # Мы не знаем, когда мы на земле((
         self.rect.y += self.yvel
         self.collide(0, self.yvel, platforms)
 
@@ -114,8 +114,8 @@ class Policeman(pygame.sprite.Sprite):
                     self.current_image = self.walking_frames_right[self.current_frame]
 
     def load_frames(self):
-        my_spritesheet = Spritesheet('../sprites/policeman_walking_white.png')
-        my_two_police_shoot_spritesheet = Spritesheet('../sprites/cyber_shot.png')
+        my_spritesheet = Spritesheet('../cyber/sprites/policeman_walking_white.png')
+        my_two_police_shoot_spritesheet = Spritesheet('../cyber/sprites/cyber_shot.png')
         self.shooting_frame_right = my_two_police_shoot_spritesheet.parse_sprite("policeman_frame_shoot_1.png")
         self.shooting_frame_left = my_two_police_shoot_spritesheet.parse_sprite("policeman_frame_shoot_2.png")
 

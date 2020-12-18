@@ -15,14 +15,14 @@ DISPLAY = (DISPLAY_W, DISPLAY_H)  # Группируем ширину и выс�
 
 clock = pygame.time.Clock()
 
-background_image1 = image.load("blue_city.jpg")
-background_image2 = image.load('backgr2.jpg')
-background_image3 = image.load('rooftops_x.jpg')
-background_image4 = image.load('backgr4.jpg')
-gameover = image.load("gameover.jpg")
-plotimage = image.load("plotimage.jpg")
+background_image1 = image.load('../cyber/sprites/blue_city.jpg')
+background_image2 = image.load('../cyber/sprites/backgr2.jpg')
+background_image3 = image.load('../cyber/sprites/rooftops_x.jpg')
+background_image4 = image.load('../cyber/sprites/backgr4.jpg')
+gameover = image.load('../cyber/sprites/gameover.jpg')
+plotimage = image.load('../cyber/sprites/plot2.jpg')
 bg_images = [background_image1, background_image2, background_image3, background_image4]
-heart_image = pygame.image.load("heart.png")
+heart_image = pygame.image.load('../cyber/sprites/heart.png')
 PLATFORM_WIDTH = 32
 PLATFORM_HEIGHT = 32
 PLATFORM_COLOR = (255, 255, 255)
@@ -37,8 +37,8 @@ def camera_configure(camera, target_rect):  # функция конфига ка
     _, _, w, h = camera
     l, t = -l + DISPLAY_W / 2, -t + DISPLAY_H / 2
 
-    leng = min(0, l)  # Не движемся дальше левой границы
-    leng = max(-(camera.width - DISPLAY_W), leng)  # Не движемся дальше правой границы
+    l = min(0, l)  # Не движемся дальше левой границы
+    l = max(-(camera.width - DISPLAY_W), l)  # Не движемся дальше правой границы
     t = max(-(camera.height - DISPLAY_H), t)  # Не движемся дальше нижней границы
     t = min(0, t)  # Не движемся дальше верхней границы
 
@@ -64,8 +64,10 @@ def level_1():
             counter = 0
         if not running:
             for i in range(100):
-                screen.blit(gameover, (0, 0))
+                screen2 = pygame.display.set_mode((750, 470))
+                screen2.blit(gameover, (0, 0))
                 pygame.display.update()  # обновление и вывод всех изменений на экран
+            quit()
             quit()
         bg.blit(bg_images[counter], (0, 0))
         if levelnew:
@@ -79,7 +81,7 @@ def level_1():
 
             entities.add(hero)
 
-            with open('all_levels') as f:
+            with open('../cyber/levels/all_levels') as f:
                 data = json.load(f)
                 level1 = data['level1']
                 level2 = data['level2']

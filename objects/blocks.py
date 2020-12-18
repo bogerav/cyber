@@ -14,13 +14,13 @@ class Platform(sprite.Sprite):
         self.image = Surface((PLATFORM_WIDTH, PLATFORM_HEIGHT))
         self.image.fill(Color(PLATFORM_COLOR))
         self.rect = Rect(x, y, PLATFORM_WIDTH, PLATFORM_HEIGHT)
-        self.current_image = image.load("thisisit.jpg")
+        self.current_image = image.load('../cyber/sprites/thisisit.jpg')
 
 
 class Escape(Platform):
     def __init__(self, x, y):
         Platform.__init__(self, x, y)
-        portal_surf = image.load('portal.bmp')
+        portal_surf = image.load('../cyber/sprites/portal.bmp')
         portal_surf.set_colorkey((255, 255, 255))
         self.current_image = portal_surf
         

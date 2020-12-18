@@ -12,14 +12,13 @@ class Game():
         self.display = pygame.Surface((self.DISPLAY_W, self.DISPLAY_H))
         self.display_for_heart = pygame.Surface((self.DISPLAY_W2, self.DISPLAY_H2))
         self.window = pygame.display.set_mode(((self.DISPLAY_W, self.DISPLAY_H)))
-        self.font_name = 'Lazer84.TTF'
+        self.font_name = '../cyber/menu_and_tools/Lazer84.TTF'
         self.BLACK, self.WHITE = (0, 0, 0), (255, 255, 255)
         self.main_menu = MainMenu(self)
         self.credits = CreditsMenu(self)
         self.curr_menu = self.main_menu
-        self.sprite_image = pygame.image.load("e.jpg")
+        self.sprite_image = pygame.image.load('../cyber/sprites/e.jpg')
         self.sprite_image = pygame.transform.smoothscale(self.sprite_image, (1280, 720))
-        self.heart_image = pygame.image.load("heart.png")
 
     def game_loop(self):
         while self.playing:
@@ -74,7 +73,7 @@ class Game():
     def start_game(self):
         self.running, self.playing = False, False
         self.curr_menu.run_display = False
-        pygame.mixer.music.load('../music and font/Sound2.ogg')
+        pygame.mixer.music.load('../cyber/music/Sound2.ogg')
         pygame.mixer.music.play()
         pygame.mixer.music.set_volume(0.25)
 

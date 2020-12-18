@@ -18,7 +18,7 @@ class Bullet(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.kind = kind
         self.image = pygame.Surface((10, 20))
-        self.current_image = pygame.image.load("smoll_laser.png")
+        self.current_image = pygame.image.load('../cyber/sprites/smoll_laser.png')
         self.rect = self.image.get_rect()
         self.rect.midbottom = (x+kind.rect.width//2, y+kind.rect.height/2)
         if self.kind.FACING_LEFT:
