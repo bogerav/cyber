@@ -1,0 +1,21 @@
+{"frames": {
+
+"marv_frame_shot_1.png":
+{
+	"frame": {"x":2,"y":5,"w":41,"h":61},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":62},
+	"sourceSize": {"w":30,"h":62}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "marv_shot.png",
+	"format": "RGBA8888",
+	"size": {"w":124,"h":205},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:25e08f38bf8a8a83daef62aa8fe0ad77:4fd91fce2665d1137edcb402e855150a:cd212b300f119d0fbb83f7e46ceafbe8$"
+}
+}
+

@@ -1,6 +1,6 @@
 
 from game import Game
-from levels import level_1
+from levels.levels import level_1
 
 
 g = Game() # инициализируем запуск игры
