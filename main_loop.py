@@ -17,5 +17,3 @@ while g.running:
     g.game_loop()
 level_1()
 
-
-

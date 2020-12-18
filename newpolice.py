@@ -30,6 +30,7 @@ class Policeman(pygame.sprite.Sprite):
         self.left_border, self.right_border = 0, 800
         self.rect = pygame.Rect(x, y, WIDTH, HEIGHT)
         self.onGround = False  # На земле ли я?
+        self.shoot = False
 
 
     def update(self, left, right, up, platforms):
@@ -86,6 +87,7 @@ class Policeman(pygame.sprite.Sprite):
         elif self.xvel < 0:
             self.state = 'moving left'
 
+
     def animate(self):
         now = pygame.time.get_ticks()
         if self.state == 'idle':
@@ -94,8 +96,15 @@ class Policeman(pygame.sprite.Sprite):
                 self.current_frame = (self.current_frame + 1) % len(self.idle_frames_left)
                 if self.FACING_LEFT:
                     self.current_image = self.idle_frames_left[self.current_frame]
+                    if self.shoot:
+                        self.current_image = self.shooting_frame_left
+                        self.shoot = False
+
                 elif not self.FACING_LEFT:
                     self.current_image = self.idle_frames_right[self.current_frame]
+                    if self.shoot:
+                        self.current_image = self.shooting_frame_right
+                        self.shoot = False
         else:
             if now - self.last_updated > 100:
                 self.last_updated = now
@@ -107,6 +116,10 @@ class Policeman(pygame.sprite.Sprite):
 
     def load_frames(self):
         my_spritesheet = Spritesheet('policeman_walking_white.png')
+        my_two_police_shoot_spritesheet = Spritesheet('cyber_shot.png')
+        self.shooting_frame_right = my_two_police_shoot_spritesheet.parse_sprite("policeman_frame_shoot_1.png")
+        self.shooting_frame_left = my_two_police_shoot_spritesheet.parse_sprite("policeman_frame_shoot_2.png")
+
         # pygame.image.load('MY_IMAGE_NAME.png').convert()
         self.idle_frames_right = [my_spritesheet.parse_sprite("policeman_frame_walk_idle.png")]
         self.walking_frames_right = [my_spritesheet.parse_sprite("policeman_frame_walk_1.png"),
