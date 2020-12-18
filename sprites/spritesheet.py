@@ -2,6 +2,7 @@ import os
 import sys
 import pygame
 import json
+import sprites
 
 
 class Spritesheet:
